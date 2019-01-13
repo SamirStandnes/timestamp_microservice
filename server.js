@@ -24,7 +24,7 @@ app.get("/", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
-
+/*
 const validateString = (err, req, res, next) => {
 let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.params.date_string);
 
@@ -36,18 +36,20 @@ let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.
   }
 
 };
-
+*/
 
 const handler = (req, res, next) => {
-let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.params.date_string);
+  let string = req.params.date_string
   
+  let date = (string.length === 0)? new Date(Date.now()) : new Date(string);
+ 
   res.json({
     unix: date.getTime(),
     utc: date.toUTCString(),
   });
 };
 
-app.get('/api/timestamp/:date_string?', validateString, handler);
+app.get('/api/timestamp/:date_string?', handler);
 
 
 app.use((err,req,res,next) => {
