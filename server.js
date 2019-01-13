@@ -26,25 +26,12 @@ app.get("/api/hello", function (req, res) {
 });
 
 
-let string = '2016-11-20';
-let date = new Date(string);
+const validateString = (err, req, res, next) => {
+let date = new Date(req.params.timestamp);
 
-
-
-const validateString = (req, res, next) => {
-let string = req.params.timestamp;
-
-  if(!string) {
-    res.json
-  }
-  else {
-
-
-  }
-
+date? next() : res.json({err: 'invalid'})
 
 };
-
 
 const handler = (req, res, next) => {
   
@@ -55,6 +42,18 @@ const handler = (req, res, next) => {
 };
 
 app.get('/api/timestamp/:date_string?', handler);
+
+
+app.use((err,req,res,next) => {
+  
+  const status = err.status || 500;
+  
+  res.status(status).json({"error" : "Invalid Date" });
+
+});
+
+
+
 
 
 // listen for requests :)
