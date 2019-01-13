@@ -25,15 +25,25 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-
 const validateString = (err, req, res, next) => {
-let date = new Date(req.params.timestamp);
+let date = (req.params.date_string === '')? new Date(new Date(req.params.date_string);
 
-date? next() : res.json({err: 'invalid'})
+  if(!date) {
+    next(err);
+  }
+  else {
+
+
+  }
+
 
 };
 
+
+
+
 const handler = (req, res, next) => {
+  let date = new Date(req.params.date_string);
   
   res.json({
     unix: date.getTime(),
