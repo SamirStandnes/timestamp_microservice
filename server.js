@@ -4,6 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
@@ -26,10 +27,31 @@ app.get("/api/hello", function (req, res) {
 
 
 let string = '2016-11-20';
+let date = new Date(string);
+
+
+
+const validateString = (req, res, next) => {
+let string = req.params.timestamp;
+
+  if(!string) {
+    res.json
+  }
+  else {
+
+
+  }
+
+
+};
+
 
 const handler = (req, res, next) => {
   
-  res.json({test: string.toUTCString()});
+  res.json({
+    unix: date.getTime(),
+    utc: date.toUTCString(),
+  });
 };
 
 app.get('/api/timestamp/:date_string?', handler);
