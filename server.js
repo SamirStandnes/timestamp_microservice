@@ -28,7 +28,7 @@ app.get("/api/hello", function (req, res) {
 const validateString = (err, req, res, next) => {
 let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.params.date_string);
 
-  if(!date) {
+  if(date) {
     next(err);
   }
   else {
@@ -39,7 +39,7 @@ let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.
 
 
 const handler = (req, res, next) => {
-  let date = new Date(req.params.date_string);
+let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.params.date_string);
   
   res.json({
     unix: date.getTime(),
