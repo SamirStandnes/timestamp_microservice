@@ -25,7 +25,14 @@ app.get("/api/hello", function (req, res) {
 });
 
 
-app.get('/api/timestamp/:date_string?', validateString, ha );
+let string = '2016-11-20';
+
+const handler = (req, res, next) => {
+  
+  res.json({test: string.toUTCString()});
+};
+
+app.get('/api/timestamp/:date_string?', handler);
 
 
 // listen for requests :)
