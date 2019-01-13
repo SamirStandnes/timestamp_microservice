@@ -26,20 +26,16 @@ app.get("/api/hello", function (req, res) {
 });
 
 const validateString = (err, req, res, next) => {
-let date = (req.params.date_string === '')? new Date(new Date(req.params.date_string);
+let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.params.date_string);
 
   if(!date) {
     next(err);
   }
   else {
-
-
+    next();
   }
 
-
 };
-
-
 
 
 const handler = (req, res, next) => {
@@ -51,7 +47,7 @@ const handler = (req, res, next) => {
   });
 };
 
-app.get('/api/timestamp/:date_string?', handler);
+app.get('/api/timestamp/:date_string?', validateString, handler);
 
 
 app.use((err,req,res,next) => {
