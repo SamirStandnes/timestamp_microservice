@@ -41,8 +41,7 @@ let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.
 const handler = (req, res, next) => {
   let string = req.params.date_string
   
-  let date = (string.length === 0)? new Date(Date.now()) : new Date(string);
- 
+  
   res.json({
     unix: date.getTime(),
     utc: date.toUTCString(),
