@@ -52,24 +52,29 @@ const string_validator = (err, req, res, next) => {
 
 */
 
-const handler = (err, req, res, next) => {
-  let req_param = req.params.date_string
-  let date = req_param === undefined ? Date.now() : req_param;
+const handler = (req, res, next) => {
+  let req_param = req.params.date_string;
+  let date = req_param === undefined ? new Date(Date.now()) : new Date(req_param);
   console.log(date);
-  if (!new Date(date)) { 
-    next(err);
+  
+  if (date == "In) { 
+    res.json({error: "Invalid Date" });
   }
   
+  else {
   res.json({
     unix: date.getTime(),
     utc: date.toUTCString(),
   });
+  }
+  
+  
 };
 
 
 app.get('/api/timestamp/:date_string?', handler);
 
-
+/*
 app.use((err,req,res,next) => {
   
   const status = err.status || 500;
@@ -78,7 +83,7 @@ app.use((err,req,res,next) => {
 
 });
 
-
+*/
 
 
 
