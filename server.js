@@ -43,7 +43,7 @@ const handler = (req, res, next) => {
   console.log(string);
   
   // let date = (string)? new Date(Date.now()) : new Date(string);
- 
+  
   
   res.json({
     unix: date.getTime(),
