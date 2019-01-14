@@ -40,7 +40,10 @@ let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.
 
 const handler = (req, res, next) => {
   let string = req.params.date_string
+  console.log(string);
   
+  // let date = (string)? new Date(Date.now()) : new Date(string);
+ 
   
   res.json({
     unix: date.getTime(),
