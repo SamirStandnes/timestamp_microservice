@@ -40,14 +40,9 @@ let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.
 
 
 const string_validator = (req) => {
- const parsed_params = '';
- 
- if ( 
-  
-   = (req.params.date_string === undefined) ? new Date(Date.now()) : new Date(req.params.date_string); 
- 
-  return data
 
+  console.log(new Date(req.params.date_string));
+ 
 };
 
 /*
@@ -65,7 +60,7 @@ const handler = (req, res, next) => {
 };
 */
 
-app.get('/api/timestamp/:date_string?', parser);
+app.get('/api/timestamp/:date_string?', string_validator);
 
 
 app.use((err,req,res,next) => {
