@@ -38,30 +38,27 @@ let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.
 };
 */
 
-
-const string_validator = (req) => {
-
-  console.log(new Date(req.params.date_string));
- 
+/*
+const string_validator = (err, req, res, next) => {
+  
+  let req_param = req.params.date_string;
+  let date = req_param === undefined ? Date.now() : req_param;
+  if (!new Date(date)) { 
+    next(err);
+  }
+  next();
+  
 };
 
+*/
 
-const handler = (req, res, next) => {
-  let req_params = req.params.date_string
-  let date = '';
-  
-  if (req_params === undefined) {
-    date = new Date (Date.now();
+const handler = (err, req, res, next) => {
+  let req_param = req.params.date_string
+  let date = req_param === undefined ? Date.now() : req_param;
+  console.log(date);
+  if (!new Date(date)) { 
+    next(err);
   }
-  
-  
-                     
-                     
-                     
-  console.log(string);
-  
-  // let date = (string)? new Date(Date.now()) : new Date(string);
-  
   
   res.json({
     unix: date.getTime(),
@@ -70,7 +67,7 @@ const handler = (req, res, next) => {
 };
 
 
-app.get('/api/timestamp/:date_string?', string_validator);
+app.get('/api/timestamp/:date_string?', handler);
 
 
 app.use((err,req,res,next) => {
