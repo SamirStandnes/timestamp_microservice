@@ -38,6 +38,15 @@ let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.
 };
 */
 
+
+const parser = (req) => {
+
+  const date = req.params.date_string; 
+  console.log(date)
+
+};
+
+/*
 const handler = (req, res, next) => {
   let string = req.params.date_string
   console.log(string);
@@ -50,8 +59,9 @@ const handler = (req, res, next) => {
     utc: date.toUTCString(),
   });
 };
+*/
 
-app.get('/api/timestamp/:date_string?', handler);
+app.get('/api/timestamp/:date_string?', parser);
 
 
 app.use((err,req,res,next) => {
