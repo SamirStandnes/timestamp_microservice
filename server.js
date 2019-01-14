@@ -45,9 +45,19 @@ const string_validator = (req) => {
  
 };
 
-/*
+
 const handler = (req, res, next) => {
-  let string = req.params.date_string
+  let req_params = req.params.date_string
+  let date = '';
+  
+  if (req_params === undefined) {
+    date = new Date (Date.now();
+  }
+  
+  
+                     
+                     
+                     
   console.log(string);
   
   // let date = (string)? new Date(Date.now()) : new Date(string);
@@ -58,7 +68,7 @@ const handler = (req, res, next) => {
     utc: date.toUTCString(),
   });
 };
-*/
+
 
 app.get('/api/timestamp/:date_string?', string_validator);
 
