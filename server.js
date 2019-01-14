@@ -39,10 +39,13 @@ let date = (req.params.date_string === '')? new Date(Date.now()) : new Date(req.
 */
 
 
-const parser = (req) => {
+const string_validator = (req) => {
 
-  const date = req.params.date_string; 
-  console.log(date)
+ if ( 
+  
+  const data = (req.params.date_string === undefined) ? new Date(Date.now()) : new Date(req.params.date_string); 
+ 
+  return data
 
 };
 
