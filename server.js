@@ -56,8 +56,7 @@ const handler = (req, res, next) => {
   let req_param = req.params.date_string;
   let date = req_param === undefined ? new Date(Date.now()) : new Date(req_param);
   console.log(date);
-  
-  if (date == "In) { 
+  if (date == "Invalid Date") { 
     res.json({error: "Invalid Date" });
   }
   
@@ -67,7 +66,6 @@ const handler = (req, res, next) => {
     utc: date.toUTCString(),
   });
   }
-  
   
 };
 
