@@ -19,7 +19,7 @@ e.g. `{"unix": 1479663089000 ,"utc": "Sun, 20 Nov 2016 17:31:29 GMT"}`.
 * { "unix": 1450137600, "natural": "December 15, 2015" }
 
 
-# Test my app  on Glitch here:
+# Test my app on Glitch here:
 
 Example:
 https://calm-iguana.glitch.me/api/timestamp/2015-12-15
